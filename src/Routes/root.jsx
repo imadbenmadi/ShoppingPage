@@ -1,15 +1,20 @@
 import { Outlet, Link } from "react-router-dom";
-// import { CartCounter, setCartCounter } from "./cart";
 import React, { useState } from "react";
-
+// export function updateCounter() {
+//     const cartItems = JSON.parse(localStorage.getItem("Cart_Items")) || [];
+//     const itemCount = cartItems.length;
+//     SetCounter(itemCount);
+// }
+// const [counter, SetCounter] = useState(
+//     JSON.parse(localStorage.getItem("Cart_Items")).length
+// );
 export function SideBar() {
     // console.log(localStorage.getItem("Cart_Items").length);
     console.log(JSON.parse(localStorage.getItem("Cart_Items")));
     console.log(JSON.parse(localStorage.getItem("Cart_Items")).length);
   // console.log(localStorage.getItem("Cart_Items"));
-      const [counter, SetCounter] = useState(
-          JSON.parse(localStorage.getItem("Cart_Items")).length
-      );
+    
+  
     return (
         <div
             className="bg-gray-600 rounded-lg  fixed  ml-3"
@@ -31,8 +36,8 @@ export function SideBar() {
                         className="rounded-full w-8 h-8 m-4 p-2 bg-white text-slate-950 absolute flex items-center justify-center left-10 "
                         style={{ top: "-12px" }}
                     >
-                        {/* {JSON.parse(localStorage.getItem("Cart_Items")).length} */}
-                        {counter}
+                        {JSON.parse(localStorage.getItem("Cart_Items")).length}
+                        {/* {counter} */}
                     </span>
                 </Link>
             </div>

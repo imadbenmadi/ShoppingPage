@@ -89,7 +89,6 @@ export default function ShopElement() {
                         <button
                             onClick={(event) => {
                                 handleAddtoCart(product);
-                                // disabled = { buttonDisable };
                                 event.currentTarget.disabled = true;
                                 event.currentTarget.innerText =
                                     "added succesfylly";

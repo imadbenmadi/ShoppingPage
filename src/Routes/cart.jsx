@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-
 export default function Cart() {
+    const [Money, SetMoney] = useState(1000);
     const [cartItems, setCartItems] = useState(
         localStorage.getItem("Cart_Items")
             ? JSON.parse(localStorage.getItem("Cart_Items"))
@@ -17,8 +17,10 @@ export default function Cart() {
         setCartItems(updatedCartItems);
         localStorage.setItem("Cart_Items", JSON.stringify(updatedCartItems));
     };
-
-    const itemsList = (
+    const handleBuy = (price) => {
+        SetMoney(Money - price);
+    };
+    const itemsList = cartItems ? (
         <ul className="grid grid-cols-2">
             {cartItems.map((product) => (
                 <li
@@ -35,7 +37,13 @@ export default function Cart() {
                         {product.price} $
                     </div>
                     <div className="flex ">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full mt-5 m-auto w-fit">
+                        <button
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full mt-5 m-auto w-fit"
+                            onClick={() => {
+                                handleBuy(product.price);
+                                handleDeleteItem(product.id);
+                            }}
+                        >
                             Check Out
                         </button>
                         <button
@@ -48,6 +56,8 @@ export default function Cart() {
                 </li>
             ))}
         </ul>
+    ) : (
+        <div>No items</div>
     );
 
     return (
@@ -56,7 +66,7 @@ export default function Cart() {
             <div>
                 <div className="mt-10">
                     <span>Your Wallet :</span>
-                    <i className="Money">1000$</i>
+                    <i className="Money font-bold text-lg">{Money}$</i>
                 </div>
             </div>
             {itemsList}
