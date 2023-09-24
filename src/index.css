@@ -1,25 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Base star styles */
 .star {
   font-size: 24px; /* Adjust the size as needed */
   color: gold;    /* Set the color of the stars */
 }
 
-/* Half-star effect */
-.half-star {
-  position: relative; /* Create a positioning context */
-  width: 0;           /* Set the initial width to 0 */
-  overflow: hidden;   /* Hide the overflow */
-}
-
-/* Create a pseudo-element to represent the half-star */
-.half-star::before {
-  content: "★";      /* Use a star character (★) or your preferred half-star representation */
-  position: absolute;
-  left: 0;
-  width: 50%;        /* Set the width to 50% for the half-star effect */
-  overflow: hidden;  /* Hide any overflow */
-  color: inherit;    /* Inherit the color from the base star */
+.swiper {
+  width: 600px;
+  height: 300px;
 }

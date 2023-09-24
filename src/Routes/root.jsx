@@ -1,27 +1,15 @@
 import { Outlet, Link } from "react-router-dom";
 // import { CartCounter, setCartCounter } from "./cart";
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 
 export function SideBar() {
     // console.log(localStorage.getItem("Cart_Items").length);
     console.log(JSON.parse(localStorage.getItem("Cart_Items")));
     console.log(JSON.parse(localStorage.getItem("Cart_Items")).length);
   // console.log(localStorage.getItem("Cart_Items"));
-      const [counter, setCounter] = useState(0);
-
-      // Use useEffect to update the counter when the component mounts
-      useEffect(() => {
-          // Get the items from localStorage
-          const cartItemsJSON = localStorage.getItem("Cart_Items");
-
-          if (cartItemsJSON) {
-              // Parse the JSON string into an array
-              const cartItems = JSON.parse(cartItemsJSON);
-
-              // Update the counter with the length of the array
-              setCounter(cartItems.length);
-          }
-      }, []);
+      const [counter, SetCounter] = useState(
+          JSON.parse(localStorage.getItem("Cart_Items")).length
+      );
     return (
         <div
             className="bg-gray-600 rounded-lg  fixed  ml-3"
@@ -64,7 +52,7 @@ export default function Root() {
                         minHeight: "calc(100vh - 34px)",
                     }}
                 >
-                    <div className="bg-gray-600 h-20 w-100 rounded-lg"></div>
+                    
                     <div>
                         <Outlet />
                     </div>
