@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 export function generateStars(rate) {
     const intStarts = Math.floor(rate);
@@ -28,21 +28,23 @@ export default function ShopElement() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [rate, setRate] = useState();
+    const [raters, setRaters] = useState();
     // const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/${id}`)
             .then((res) => res.json())
-            .then((data) =>{
+            .then((data) => {
                 setProduct(data);
                 setRate(data.rating.rate);
+                setRaters(data.rating.count);
             })
             .catch((error) => console.error("Error fetching data:", error));
     }, [id]); // Include id in the dependency array to re-fetch data when id changes
     return (
         <>
             <div className="flex">
-                <div className="basis-5/12 border-2">
+                <div className="basis-5/12 border-2 flex items-center">
                     <img
                         src={product.image}
                         alt=""
@@ -57,14 +59,18 @@ export default function ShopElement() {
                     <div className="text-xl font-bold text-green-600 mt-2">
                         {product.price}$
                     </div>
-                    <div className="mt-3">{generateStars(rate)}</div>
+                    <div className="mt-3">
+                        {generateStars(rate)}
+                        <span>{raters}raters</span>
+                    </div>
+                    <div className="text-2xl font-bold align-middle mt-10 mb-10">
+                        {product.description}
+                    </div>
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full mt-5">
                         Add To Cart
                     </button>
                 </div>
             </div>
-
-            <div className="text-2xl font-bold align-middle">{product.description}</div>
         </>
     );
 }
