@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { cartItems } from "./root";
 export function generateStars(rate) {
     const intStarts = Math.floor(rate);
     const floatStar = intStarts % 1;
@@ -23,13 +24,17 @@ export function generateStars(rate) {
     }
     return <div>{stars}</div>;
 }
-
+export function handleAddtoCart(product) {
+    cartItems.push(product);
+    localStorage.setItem("Cart_Items", JSON.stringify(cartItems));
+    
+}
 export default function ShopElement() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [rate, setRate] = useState();
     const [raters, setRaters] = useState();
-    // const navigate = useNavigate();
+    
 
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/${id}`)
@@ -66,7 +71,16 @@ export default function ShopElement() {
                     <div className="text-2xl font-bold align-middle mt-10 mb-10">
                         {product.description}
                     </div>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full mt-5">
+                    <button
+                        onClick={(event) => {
+                            handleAddtoCart(product);
+                            // disabled = { buttonDisable };
+                            event.currentTarget.disabled = true;
+                            event.currentTarget.innerText = "added succesfylly";
+                            event.currentTarget.style.background = "green";
+                        }}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full mt-5"
+                    >
                         Add To Cart
                     </button>
                 </div>
