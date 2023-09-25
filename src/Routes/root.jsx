@@ -3,11 +3,10 @@ import React, { useState } from "react";
 
 export function SideBar() {
     // console.log(localStorage.getItem("Cart_Items").length);
-    console.log(JSON.parse(localStorage.getItem("Cart_Items")));
-    console.log(JSON.parse(localStorage.getItem("Cart_Items")).length);
-  // console.log(localStorage.getItem("Cart_Items"));
-    
-  
+    // console.log(JSON.parse(localStorage.getItem("Cart_Items")));
+    // console.log(JSON.parse(localStorage.getItem("Cart_Items")).length);
+    // console.log(localStorage.getItem("Cart_Items"));
+
     return (
         <div
             className="bg-gray-600 rounded-lg  fixed  ml-3"
@@ -29,7 +28,8 @@ export function SideBar() {
                         className="rounded-full w-8 h-8 m-4 p-2 bg-white text-slate-950 absolute flex items-center justify-center left-10 "
                         style={{ top: "-12px" }}
                     >
-                        {JSON.parse(localStorage.getItem("Cart_Items")).length}
+                        0
+                        {/* {JSON.parse(localStorage.getItem("Cart_Items")).length} */}
                         {/* {counter} */}
                     </span>
                 </Link>
@@ -50,7 +50,6 @@ export default function Root() {
                         minHeight: "calc(100vh - 34px)",
                     }}
                 >
-                    
                     <div>
                         <Outlet />
                     </div>
