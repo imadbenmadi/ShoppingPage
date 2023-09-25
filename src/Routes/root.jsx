@@ -37,7 +37,7 @@ export function SideBar() {
         </div>
     );
 }
-export let cartItems = [];
+
 export default function Root() {
     return (
         <div className="relative">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { cartItems } from "./root";
+// import { cartItems } from "./root";
 export function generateStars(rate) {
     const intStarts = Math.floor(rate);
     const floatStar = intStarts % 1;
