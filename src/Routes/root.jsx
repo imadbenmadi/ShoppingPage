@@ -1,13 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { useState } from "react";
-// export function updateCounter() {
-//     const cartItems = JSON.parse(localStorage.getItem("Cart_Items")) || [];
-//     const itemCount = cartItems.length;
-//     SetCounter(itemCount);
-// }
-// const [counter, SetCounter] = useState(
-//     JSON.parse(localStorage.getItem("Cart_Items")).length
-// );
+
 export function SideBar() {
     // console.log(localStorage.getItem("Cart_Items").length);
     console.log(JSON.parse(localStorage.getItem("Cart_Items")));
